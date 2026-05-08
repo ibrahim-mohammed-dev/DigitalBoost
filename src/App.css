@@ -1,0 +1,342 @@
+/* ============================================================
+   App.css — v2: Refined Design System
+   ============================================================ */
+
+/* ─── Google Fonts ── loaded in index.html ── */
+
+/* ─── CSS Variables ─────────────────────────── */
+:root {
+  /* Brand */
+  --blue:        #2563eb;
+  --blue-dark:   #1e40af;
+  --blue-deep:   #1e3a8a;
+  --blue-light:  #3b82f6;
+  --blue-xl:     #60a5fa;
+  --blue-5:      #f0f7ff;
+  --blue-10:     #dbeafe;
+  --blue-20:     #bfdbfe;
+
+  /* Ink scale */
+  --ink:    #0a0f1e;
+  --ink-2:  #1e293b;
+  --ink-3:  #334155;
+  --ink-4:  #64748b;
+  --ink-5:  #94a3b8;
+
+  /* Surface */
+  --white:  #ffffff;
+  --sur:    #f8fafc;
+  --sur-2:  #f1f5f9;
+  --brd:    #e2e8f0;
+
+  /* Status */
+  --success:       #10b981;
+  --success-light: #dcfce7;
+  --error:         #ef4444;
+  --error-light:   #fee2e2;
+
+  /* Typography */
+  --font: 'Cairo', 'Poppins', system-ui, sans-serif;
+
+  /* Spacing */
+  --section-v: 100px;
+  --container: 1100px;
+  --gutter:    28px;
+
+  /* Radii */
+  --r4:    4px;
+  --r8:    8px;
+  --r12:   12px;
+  --r16:   16px;
+  --r20:   20px;
+  --r24:   24px;
+  --rfull: 9999px;
+
+  /* Shadows */
+  --sh-xs: 0 1px 2px rgba(0,0,0,.05);
+  --sh-sm: 0 2px 4px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
+  --sh-md: 0 4px 8px rgba(0,0,0,.06), 0 12px 32px rgba(0,0,0,.08);
+  --sh-lg: 0 8px 16px rgba(0,0,0,.06), 0 24px 56px rgba(0,0,0,.1);
+  --sh-xl: 0 16px 32px rgba(0,0,0,.08), 0 48px 80px rgba(0,0,0,.12);
+  --sh-blue: 0 8px 24px rgba(37,99,235,.3), 0 2px 4px rgba(37,99,235,.15);
+
+  /* Easing */
+  --ease: cubic-bezier(.22,.68,0,1.2);
+  --ease-out: cubic-bezier(0,0,.2,1);
+
+  /* Transitions */
+  --t-fast: 180ms;
+  --t-base: 260ms;
+  --t-slow: 420ms;
+}
+
+/* ─── Reset ─────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--ink);
+  direction: rtl;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img    { max-width: 100%; display: block; }
+a      { text-decoration: none; color: inherit; }
+ul, ol { list-style: none; }
+
+button, input, textarea, select {
+  font-family: var(--font);
+  border: none;
+  outline: none;
+}
+
+button { cursor: pointer; background: none; }
+
+/* ─── Container ─────────────────────────────── */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  width: 100%;
+}
+
+/* ─── Section ───────────────────────────────── */
+.section {
+  padding: var(--section-v) 0;
+}
+
+/* ─── Section Header ────────────────────────── */
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+/* Animated pill tag */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--blue-10);
+  color: var(--blue-dark);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: var(--rfull);
+  margin-bottom: 18px;
+}
+
+.section-tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue-light);
+  animation: pulse 2s ease infinite;
+}
+
+.section-title {
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -.035em;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 16px;
+  color: var(--ink-4);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ─── Buttons ───────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font);
+  font-weight: 700;
+  border-radius: var(--rfull);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--t-base) var(--ease);
+  letter-spacing: .01em;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sizes */
+.btn-xl { font-size: 16px; padding: 16px 32px; }
+.btn-lg { font-size: 15px; padding: 13px 28px; }
+.btn-md { font-size: 14px; padding: 10px 22px; }
+.btn-sm { font-size: 13px; padding: 8px 18px; }
+
+/* Primary */
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: var(--sh-blue), inset 0 1px 0 rgba(255,255,255,.18);
+}
+.btn-primary:hover {
+  background: var(--blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(37,99,235,.2), 0 16px 40px rgba(37,99,235,.38);
+}
+.btn-primary:active { transform: translateY(0) scale(.98); }
+
+/* Shimmer effect on primary hover */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+  transform: translateX(100%);
+  transition: transform .45s var(--ease-out);
+}
+.btn-primary:hover::after { transform: translateX(-100%); }
+
+/* Outline */
+.btn-outline {
+  background: transparent;
+  color: var(--blue);
+  border-color: var(--blue-20);
+}
+.btn-outline:hover {
+  background: var(--blue-5);
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+
+/* Ghost (for dark backgrounds) */
+.btn-ghost {
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  border-color: rgba(255,255,255,.3);
+  backdrop-filter: blur(4px);
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,.2);
+  border-color: rgba(255,255,255,.5);
+  transform: translateY(-2px);
+}
+
+/* Arrow icon inside button */
+.btn-arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: transform var(--t-base) var(--ease);
+  flex-shrink: 0;
+}
+.btn-primary:hover .btn-arrow { transform: translateX(-4px); }
+.btn-ghost:hover .btn-arrow   { transform: translateX(-4px); }
+
+/* ─── Keyframe Animations ───────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: .7; }
+  50%       { transform: scale(1.2); opacity: .3; }
+}
+@keyframes growBar {
+  from { height: 0; }
+  to   { height: var(--bar-h); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes slideInCard {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulseRing {
+  0%   { transform: scale(.9); opacity: .6; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.animate-fade-up { animation: fadeInUp .65s var(--ease) both; }
+
+/* ─── Scroll Reveal ─────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .6s var(--ease-out), transform .6s var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── WhatsApp Floating Button ──────────────── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(37,211,102,.4);
+  transition: transform var(--t-base) var(--ease);
+  cursor: pointer;
+}
+.whatsapp-float:hover { transform: scale(1.12); }
+
+.whatsapp-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #25d366;
+  animation: pulseRing 2.4s ease-out infinite;
+}
+
+.whatsapp-float svg {
+  width: 28px;
+  height: 28px;
+  fill: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Responsive Globals ────────────────────── */
+@media (max-width: 768px) {
+  :root { --section-v: 64px; --gutter: 20px; }
+  .section-header { margin-bottom: 40px; }
+  .section-title  { letter-spacing: -.025em; }
+}
